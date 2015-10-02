@@ -1,0 +1,94 @@
+body
+  padding: 0
+  margin: 0
+
+#content
+  position: absolute
+  top: 0
+  width: 100%
+  height: 100%
+  font-family: "Open Sans"
+  overflow-y: hidden
+
+  #viewport
+    position: absolute
+    display: none
+    width: 100%
+    height: calc(100% - 32px)
+    top: 32px
+    border: none
+
+  #form
+    position: absolute
+
+    #input
+      position: absolute
+
+    #button
+      position: absolute
+      height: 30px
+      width: 100px
+      right: 0
+      background: #5ab3d1
+      text-align: center
+      cursor: pointer
+      color: #fff
+      font-size: 20px
+      font-weight: bold
+
+    #urlfield
+      border: none
+      padding-left: 10px
+      font-size: 20px
+      font-family: "Open Sans"
+      color: #4d4d4d
+
+      &:focus
+        border: none
+        outline: none
+
+    &.main
+      width: 50%
+      height: 30px
+      top: 45%
+      left: 0
+      right: 0
+      margin: 0 auto
+      border: 1px solid #5ab3d1
+      border-radius: 10px
+      overflow: hidden
+
+      #urlfield
+        position: absolute
+        left: 0
+        height: 25px
+        width: calc(100% - 100px)
+
+    &.error
+      border: 1px solid red
+
+
+    &.transient
+      animation-name: move-form
+      animation-duration: 1s
+      animation-timing-function: ease-out
+      animation-play-state: running
+      animation-fill-mode: forwards
+
+#content.result
+  #form
+    top: 0
+    width: 99%
+    border-radius: 0
+
+  #viewport
+    display: block
+
+@keyframes move-form
+  90%
+    border-radius: 5
+
+  100%
+    top: 0
+    width: 99%
+    border-radius: 0

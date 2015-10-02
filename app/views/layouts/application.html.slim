@@ -1,0 +1,11 @@
+doctype html
+html lang="ru"
+  head
+    meta charset="utf-8"
+    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag '//fonts.googleapis.com/css?family=Open+Sans:400,700,800&subset=latin,cyrillic'
+    = javascript_include_tag 'application'
+    title = 'title'
+    = csrf_meta_tags
+  body
+    = yield
