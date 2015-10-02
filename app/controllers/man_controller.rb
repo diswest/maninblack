@@ -20,8 +20,6 @@ class ManController < ApplicationController
     restore_styles!(doc, parsed_url)
     restore_scripts!(doc, parsed_url)
 
-    #fix_encoding!(doc)
-
     result = doc.to_html
 
     render layout: false, text: result
@@ -110,20 +108,6 @@ class ManController < ApplicationController
     doc.css('script').each do |script|
       if script.attributes['src'] and is_relative_link?(script.attributes['src'].to_s)
         script.attributes['src'].value = "#{parsed_url.scheme}://#{parsed_url.host}#{script.attributes["src"].value}"
-      end
-    end
-  end
-
-  def fix_encoding!(doc)
-    doc.css('meta').each do |meta|
-      if meta.attributes['charset'] and meta.attributes['charset'].value != 'utf8'
-        meta.attributes['charset'].value = 'utf8'
-      end
-
-      if meta.attributes['http-equiv'] and meta.attributes['http-equiv'].value == 'Content-Type' and
-        !meta.attributes['content'].include?('utf8')
-
-        meta.attributes['content'].value = 'text/html; charset=utf8'
       end
     end
   end
