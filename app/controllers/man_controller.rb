@@ -71,7 +71,7 @@ class ManController < ApplicationController
   def replace_meduza_images!(doc, parsed_url)
     doc.css('div.NewsEntryImage').each do |img|
       if img.attributes['style']
-        img.attributes['style'].value = "background-image:url(#{view_context.image_url('maninblack.jpg')})"
+        img.attributes['style'].value = "background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(#{view_context.image_url('maninblack.jpg')})"
       end
     end
   end
