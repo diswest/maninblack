@@ -20,9 +20,11 @@ class ManController < ApplicationController
     restore_styles!(doc, parsed_url)
     restore_scripts!(doc, parsed_url)
 
-    fix_encoding!(doc)
+    #fix_encoding!(doc)
 
-    render layout: false, text: "#{doc.to_html}"
+    result = doc.to_html
+
+    render layout: false, text: result
   end
 
   def validate
@@ -59,6 +61,25 @@ class ManController < ApplicationController
             img.attributes['src'].value = "#{parsed_url.scheme}://#{parsed_url.host}#{img.attributes["src"].value}"
           end
         end
+      end
+
+      replace_meduza_images!(doc, parsed_url) if parsed_url.host == 'meduza.io'
+      replace_slon_images!(doc, parsed_url) if parsed_url.host == 'slon.ru'
+    end
+  end
+
+  def replace_meduza_images!(doc, parsed_url)
+    doc.css('div.NewsEntryImage').each do |img|
+      if img.attributes['style']
+        img.attributes['style'].value = "background-image:url(#{view_context.image_url('maninblack.jpg')})"
+      end
+    end
+  end
+
+  def replace_slon_images!(doc, parsed_url)
+    doc.css('div.card-cover').each do |img|
+      if img.attributes['style']
+        img.attributes['style'].value = "background-image:url(#{view_context.image_url('maninblack.jpg')})"
       end
     end
   end
