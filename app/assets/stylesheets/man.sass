@@ -10,6 +10,10 @@ body
   font-family: "Open Sans"
   overflow-y: hidden
 
+  #viewport-wrapper
+    overflow-y: auto
+    -webkit-overflow-scrolling: touch
+
   #viewport
     position: absolute
     display: none
@@ -17,7 +21,7 @@ body
     height: calc(100% - 32px)
     top: 32px
     border: none
-    overflow-y: auto 
+
 
   #form
     position: absolute
