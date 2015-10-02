@@ -22,6 +22,8 @@ class ManController < ApplicationController
 
     result = doc.to_html
 
+    response.headers['Content-Type'] = 'text/html; charset=windows-1251' if is_win_charset?(doc)
+
     render layout: false, text: result
   end
 
@@ -112,16 +114,32 @@ class ManController < ApplicationController
     end
   end
 
+  def is_win_charset?(doc)
+    doc.css('meta').each do |meta|
+      if meta.attributes['http-equiv'] and meta.attributes['http-equiv'].value == 'Content-Type' \
+        and meta.attributes['content'].value.include?('1251')
+
+        return true
+      end
+    end
+
+    false
+  end
+
   def is_relative_link?(link)
     link[0] == '/' and link[0..1] != '//'
   end
 
   def is_logo_image?(node)
-    if node.attributes['class'] and node.attributes['class'].value =~ /.*logo.*/
+    if node.attributes['class'] and node.attributes['class'].value.include?('logo')
       return true
     end
 
-    if node.attributes['id'] and node.attributes['id'].value =~ /.*logo.*/
+    if node.attributes['id'] and node.attributes['id'].value.include?('logo')
+      return true
+    end
+
+    if node.attributes['src'] and node.attributes['src'].value.include?('logo.')
       return true
     end
 
