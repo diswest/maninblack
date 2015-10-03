@@ -3,8 +3,8 @@ SharingTags.configure do
     app_id '1627337934188797'
   end
 
-  title { 'Властелин' }
-  description { 'Кажется, вам снова есть, через что читать' }
+  title { 'Vlastelin.io' }
+  description { 'Твой интернет уже не будет прежним' }
   image('1200x630', 'image/png') do
     asset_url('sharing_fb.png')
   end
@@ -18,6 +18,8 @@ SharingTags.configure do
   twitter do
     page_url 'http://vlastelin.io'
     share_url 'http://vlastelin.io'
+
+    description '#Vlastelin Твой интернет уже не будет прежним'
 
     image('1200x630', 'image/png') do
       asset_url('sharing_vk.png')
