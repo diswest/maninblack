@@ -17,6 +17,7 @@ SharingTags.configure do
 
   twitter do
     page_url 'http://vlastelin.io'
+    share_url 'http://vlastelin.io'
 
     image('1200x630', 'image/png') do
       asset_url('share_vk.png')
