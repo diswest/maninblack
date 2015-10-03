@@ -19,7 +19,7 @@ SharingTags.configure do
     page_url 'http://vlastelin.io'
     share_url 'http://vlastelin.io'
 
-    description '#Vlastelin Твой интернет уже не будет прежним'
+    title "#Vlastelin \n Твой интернет уже не будет прежним"
 
     image('1200x630', 'image/png') do
       asset_url('sharing_vk.png')
