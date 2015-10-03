@@ -6,12 +6,12 @@ SharingTags.configure do
   title { 'Властелин' }
   description { 'Кажется, вам снова есть, через что читать' }
   image('1200x630', 'image/png') do
-    asset_url('share_fb.png')
+    asset_url('sharing_fb.png')
   end
 
   vkontakte do
     image('1200x630', 'image/png') do
-      asset_url('share_vk.png')
+      asset_url('sharing_vk.png')
     end
   end
 
@@ -20,7 +20,7 @@ SharingTags.configure do
     share_url 'http://vlastelin.io'
 
     image('1200x630', 'image/png') do
-      asset_url('share_vk.png')
+      asset_url('sharing_vk.png')
     end
   end
 
