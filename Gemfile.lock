@@ -73,6 +73,7 @@ GEM
       em-websocket (~> 0.5)
       guard (~> 2.8)
       multi_json (~> 1.8)
+    hashie (3.4.2)
     http_parser.rb (0.6.0)
     httparty (0.13.7)
       json (~> 1.8)
@@ -103,6 +104,7 @@ GEM
     nenv (0.2.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    non-stupid-digest-assets (1.0.5)
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -157,6 +159,14 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sharing_tags (0.0.18)
+      coffee-script (~> 2.3)
+      hashie (~> 3.4)
+      jquery-rails
+      non-stupid-digest-assets (~> 1.0)
+      rails (> 4.0)
+      role-rails (~> 1.4)
+      slim-rails (~> 3.0)
     shellany (0.0.1)
     slim (3.0.6)
       temple (~> 0.7.3)
@@ -210,6 +220,7 @@ DEPENDENCIES
   role-rails (~> 1.4.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  sharing_tags
   slim-rails
   spring
   sqlite3

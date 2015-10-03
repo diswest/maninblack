@@ -28,6 +28,7 @@ gem 'slim-rails'
 gem 'httparty'
 gem 'nokogiri'
 gem 'puma'
+gem 'sharing_tags'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

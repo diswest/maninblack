@@ -16,4 +16,5 @@
 //= require_tree .
 
 //= require jquery.role
+//= require sharing_tags
 //= require man
