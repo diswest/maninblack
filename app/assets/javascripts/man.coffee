@@ -2,6 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
+  if window.location.hash
+    $('@urlfield').val(window.location.hash.substring(1))
+    window.app.request()
+
   $('body').on 'click', '@button', ->
     window.app.request()
 
@@ -19,11 +23,14 @@ window.app.request = ->
   $.ajax '/validate',
     type: 'GET',
     dataType: 'json',
+    timeout: 10000
     data:
       url: $('@urlfield').val()
     complete: ->
       $('@form').removeClass('loader')
       $('@urlfield').removeAttr('readonly')
+    error: ->
+      $('@form').addClass('error')
     success: (response) ->
       if !response.success
         $('@form').addClass('error')

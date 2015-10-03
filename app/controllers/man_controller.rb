@@ -3,11 +3,13 @@ class ManController < ApplicationController
   def index
     return if not params[:url]
 
-    url = (params[:url][0..3] == 'http') ? params[:url] : "http://#{params[:url]}"
+    url = get_url
     parsed_url = URI.parse(url)
 
     begin
-      res = HTTParty.get(url)
+      res = HTTParty.get(url, headers: {
+          'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36'
+      })
     rescue
       return
     end
@@ -31,7 +33,7 @@ class ManController < ApplicationController
     @result = true
     @result = false if not params[:url]
 
-    url = (params[:url][0..3] == 'http') ? params[:url] : "http://#{params[:url]}"
+    url = get_url
     parsed_url = URI.parse(url)
 
     begin
@@ -50,6 +52,11 @@ class ManController < ApplicationController
   end
 
   private
+
+  def get_url()
+    url = (params[:url][0..3] == 'http') ? params[:url] : "http://#{params[:url]}"
+    url.strip
+  end
 
   def replace_images!(doc, parsed_url)
     doc.css('img').each do |img|
@@ -116,7 +123,7 @@ class ManController < ApplicationController
 
   def is_win_charset?(doc)
     doc.css('meta').each do |meta|
-      if meta.attributes['http-equiv'] and meta.attributes['http-equiv'].value == 'Content-Type' \
+      if meta.attributes['http-equiv'] and meta.attributes['http-equiv'].value.downcase == 'content-type' \
         and meta.attributes['content'].value.include?('1251')
 
         return true
