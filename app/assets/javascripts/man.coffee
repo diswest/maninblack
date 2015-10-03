@@ -40,6 +40,8 @@ window.app.request = ->
         $('@viewport').attr('src', "/?url=#{url}")
         $('@form').addClass('transient')
 
+        window.location.hash = "##{url}";
+
         setResultClass = ->
           $('@form').removeClass('transient')
           $('@content').addClass('result')
