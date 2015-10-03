@@ -1,6 +1,6 @@
 SharingTags.configure do
   facebook do
-    app_id '462173197303481'
+    app_id '1627337934188797'
   end
 
   title { 'Властелин' }
