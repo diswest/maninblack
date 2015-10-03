@@ -23,7 +23,6 @@ before_exec do |_server|
 end
 
 before_fork do |server, worker|
-  ActiveRecord::Base.connection.disconnect!
 
   old_pid = [server.config[:pid], 'oldbin'].join('.')
   if old_pid != server.pid
@@ -36,7 +35,6 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-  defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
   # if Process.ppid > 1
   child_pid = server.config[:pid].sub('.pid', ".#{worker.nr}.pid")
   system("echo #{Process.pid} > #{child_pid}")
