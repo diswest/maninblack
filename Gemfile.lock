@@ -191,7 +191,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sqlite3 (1.3.10)
     temple (0.7.6)
     thor (0.19.1)
     thread_safe (0.3.5)
@@ -234,7 +233,6 @@ DEPENDENCIES
   sharing_tags
   slim-rails
   spring
-  sqlite3
   turbolinks
   uglifier (>= 1.3.0)
   unicorn
