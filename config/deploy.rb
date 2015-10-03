@@ -28,6 +28,8 @@ set :keep_releases, 3
 #   set :port, '30000'     # SSH port number.
 #   set :forward_agent, true     # SSH forward_agent.
 
+set :term_mode, nil
+
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
@@ -38,7 +40,7 @@ task :environment do
   queue! '[[ -s "/usr/local/rvm/scripts/rvm" ]] &&  source "/usr/local/rvm/scripts/rvm"'
 
   # For those using RVM, use this to load an RVM version@gemset.
-  invoke :'rvm:use[2.2.0]'
+  invoke :'rvm:use[2.2.1]'
 end
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
