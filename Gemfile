@@ -27,6 +27,7 @@ gem 'role-rails', '~> 1.4.0'
 gem 'slim-rails'
 gem 'httparty'
 gem 'nokogiri'
+gem 'puma'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

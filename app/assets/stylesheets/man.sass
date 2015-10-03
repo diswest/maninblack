@@ -27,9 +27,6 @@ body
   #form
     position: absolute
 
-    #input
-      position: absolute
-
     #button
       position: absolute
       height: 30px
@@ -48,10 +45,19 @@ body
       font-size: 20px
       font-family: "Open Sans"
       color: #4d4d4d
+      width: calc(100% - 120px)
 
       &:focus
         border: none
         outline: none
+
+    &.loader
+      background: rgba(50, 50, 50, 0.5)
+      pointer-events: none
+
+      #urlfield
+        background: right center no-repeat asset-data-url('loader.svg')
+        background-size: contain
 
     &.main
       width: 50%
@@ -68,7 +74,6 @@ body
         position: absolute
         left: 0
         height: 25px
-        width: calc(100% - 100px)
 
     &.error
       border: 1px solid red
