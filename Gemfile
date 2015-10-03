@@ -27,8 +27,10 @@ gem 'role-rails', '~> 1.4.0'
 gem 'slim-rails'
 gem 'httparty'
 gem 'nokogiri'
-gem 'puma'
+gem 'unicorn'
 gem 'sharing_tags'
+gem 'mina', '~> 0.3.4'
+gem 'mina-unicorn', require: false
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
