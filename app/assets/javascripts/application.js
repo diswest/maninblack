@@ -21,4 +21,5 @@
 //= require sharing_tags/share/callback
 //= require sharing_tags/links
 //= require sharing_tags/init
+//= require counter
 //= require man
