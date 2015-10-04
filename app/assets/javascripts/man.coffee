@@ -10,6 +10,10 @@ $ ->
   $('body').on 'click', '@button', ->
     window.app.request()
 
+  $('body').on 'click', '@logo', ->
+    window.location.hash = ''
+    window.location.reload()
+
   $('@urlfield').on 'keypress', (e) ->
     $('@form').removeClass('error')
     window.app.request() if e.which == 13
@@ -18,6 +22,7 @@ $ ->
     $('@form').removeClass('error')
 
   $('body'). on 'click', '@suggest-button', (e) ->
+    console.log('cal')
     $('@urlfield').val($(@).data('domain'))
     window.app.request()
 
