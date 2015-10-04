@@ -21,9 +21,13 @@
       = suggest_domain('gazeta.ru')
       = suggest_domain('tjournal.ru')
       = suggest_domain('vc.ru')
-  #sharing-button@sharing-button
-    span SHARE ▾
-  #sharing-result@sharing-result
-    = sharing_tags_buttons :vkontakte, :facebook, :twitter
+  - if @device == :mobile
+    #sharing-button@sharing-button
+      span SHARE ▾
+    #sharing-result@sharing-result-mobile
+      = sharing_tags_buttons :vkontakte, :facebook, :twitter
+  - else
+    #sharing-result@sharing-result
+      = sharing_tags_buttons :vkontakte, :facebook, :twitter
   #viewport
     iframe#viewport-iframe@viewport

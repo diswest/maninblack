@@ -27,17 +27,17 @@ $ ->
 
   $('body').on 'click', '@sharing-button', (e) ->
     e.stopPropagation()
-    if $('@sharing-result').css('display') != 'none'
-      $('@sharing-result').hide()
+    if $('@sharing-result-mobile').css('display') != 'none'
+      $('@sharing-result-mobile').hide()
     else
-      $('@sharing-result').show()
+      $('@sharing-result-mobile').show()
 
   $('body').on 'click', ->
-    $('@sharing-result').hide()
+    $('@sharing-result-mobile').hide()
 
 
   $('@iframe').contents().find('body').on 'click', ->
-    $('@sharing-result').hide()
+    $('@sharing-result-mobile').hide()
 
 window.app = window.app || {}
 window.app.request = ->
