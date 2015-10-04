@@ -17,6 +17,10 @@ $ ->
   $('@urlfield').on 'focus', ->
     $('@form').removeClass('error')
 
+  $('body'). on 'click', '@suggest-button', (e) ->
+    $('@urlfield').val($(@).data('domain'))
+    window.app.request()
+
 window.app = window.app || {}
 window.app.request = ->
   $('@urlfield').attr('readonly', 'readonly')
