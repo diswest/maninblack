@@ -7,6 +7,32 @@ body
 #sharing-button
   display: none
 
+#sharing-result
+  display: none
+  position: absolute
+  right: 10px
+  top: 5px
+  width: 140px
+
+  .sharing_tags-buttons__icon
+    width: 40px
+    height: 40px
+    background: center no-repeat
+    background-size: contain
+    transition: opacity 0.2s ease-in-out
+
+    &:hover
+      opacity: 0.5
+
+  .sharing_tags-vkontakte__icon
+    background-image: asset-data-url('share_vk.png')
+
+  .sharing_tags-facebook__icon
+    background-image: asset-data-url('share_fb.png')
+
+  .sharing_tags-twitter__icon
+    background-image: asset-data-url('share_tw.png')
+
 #content
   position: absolute
   top: 0
@@ -226,6 +252,9 @@ body
       animation-fill-mode: forwards
 
 #content.result
+  #sharing-result
+    display: block
+    
   #logo
     top: 5px
     left: 10px
@@ -259,31 +288,6 @@ body
     display: block
     background: center no-repeat asset-data-url('loader.svg')
     background-size: 10% 10%
-
-  #sharing-result
-    position: absolute
-    right: 10px
-    top: 5px
-    width: 140px
-
-    .sharing_tags-buttons__icon
-      width: 40px
-      height: 40px
-      background: center no-repeat
-      background-size: contain
-      transition: opacity 0.2s ease-in-out
-
-      &:hover
-        opacity: 0.5
-
-    .sharing_tags-vkontakte__icon
-      background-image: asset-data-url('share_vk.png')
-
-    .sharing_tags-facebook__icon
-      background-image: asset-data-url('share_fb.png')
-
-    .sharing_tags-twitter__icon
-      background-image: asset-data-url('share_tw.png')
 
 @keyframes move-logo
   100%
