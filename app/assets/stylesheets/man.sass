@@ -78,6 +78,10 @@ body
       overflow: hidden
       transition: outline 0.2s ease-in-out
 
+      &.error
+        #urlfield
+          border: 1px solid red
+
       &:hover
         outline: 1px solid #aaa
 
@@ -161,7 +165,7 @@ body
   #viewport
     display: block
     background: center no-repeat asset-data-url('loader.svg')
-    background-size: 50% 50%
+    background-size: 10% 10%
 
   #logo
     animation-name: move-logo
