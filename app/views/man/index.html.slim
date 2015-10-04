@@ -2,20 +2,27 @@
   a#logo@logo href="#{url_for(root_path)}"
     #logo-text vlastelin.io
   #form-wrapper
-    #form-title Твой интернет уже не будет прежним
+    - if @device == :mobile
+      #form-title Твой интернет<br />уже не будет прежним
+    - else
+      #form-title Твой интернет уже не будет прежним
     #form@form
-      input#urlfield@urlfield type="text" placeholder="Введите в строку адрес сайта..."
-      #button@button ПОНЕСЛАСЬ
+      - if @device == :mobile
+        input#urlfield@urlfield type="text" placeholder="URL сайта..."
+        #button@button
+      - else
+        input#urlfield@urlfield type="text" placeholder="Введите в строку адрес сайта..."
+        #button@button ПОДЧИНИТЬ
+
     #suggest
       #suggest-title Например
       = suggest_domain('lenta.ru')
-      = suggest_domain('gazeta.ru')
-      = suggest_domain('vc.ru')
       = suggest_domain('meduza.io')
-      = suggest_domain('lenta.ru')
       = suggest_domain('gazeta.ru')
+      = suggest_domain('tjournal.ru')
       = suggest_domain('vc.ru')
-      = suggest_domain('meduza.io')
+  #sharing-button@sharing-button
+    span SHARE ▾
   #sharing-result@sharing-result
     = sharing_tags_buttons :vkontakte, :facebook, :twitter
   #viewport

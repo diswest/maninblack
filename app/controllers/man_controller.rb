@@ -1,6 +1,8 @@
 class ManController < ApplicationController
 
   def index
+    @device = env['mobvious.device_type']
+
     return if not params[:url]
 
     url = get_url
@@ -8,7 +10,7 @@ class ManController < ApplicationController
 
     begin
       res = HTTParty.get(url, headers: {
-          'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36'
+          'User-Agent' => request.user_agent
       })
     rescue
       return
@@ -63,6 +65,7 @@ class ManController < ApplicationController
       if img.attributes['src']
         unless is_logo_image?(img)
           img.attributes['src'].value = view_context.image_url('maninblack.jpg')
+          img.attributes['srcset'].value = view_context.image_url('maninblack.jpg') if img.attributes['srcset']
         else
           if is_relative_link?(img.attributes['src'].value)
             img.attributes['src'].value = "#{parsed_url.scheme}://#{parsed_url.host}#{img.attributes["src"].value}"
@@ -74,6 +77,15 @@ class ManController < ApplicationController
 
       replace_meduza_images!(doc, parsed_url) if parsed_url.host == 'meduza.io'
       replace_slon_images!(doc, parsed_url) if parsed_url.host == 'slon.ru'
+    end
+
+    doc.css('source').each do |source|
+      if source.attributes['srcset'] and (
+        source.attributes['srcset'].value.include?('.jpg') or
+        source.attributes['srcset'].value.include?('.png')
+      )
+        source.attributes['srcset'].value = view_context.image_url('maninblack.jpg')
+      end
     end
   end
 

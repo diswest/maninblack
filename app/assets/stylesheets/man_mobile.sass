@@ -1,0 +1,235 @@
+body
+  padding: 0
+  margin: 0
+
+#content
+  position: absolute
+  top: 0
+  width: 100%
+  height: 100%
+  font-family: "Open Sans"
+  overflow-y: hidden
+  background-color: #f4eb66
+
+  #sharing-button
+    display: none
+
+  #logo
+    position: absolute
+    top: 25px
+    left: 50%
+    transform: translateX(-50%)
+    width: 82px
+    height: 95px
+    background: center top no-repeat asset-data-url('logo.png')
+    background-size: 64px 64px
+
+    #logo-text
+      display: inline-block
+      position: absolute
+      bottom: 0
+      font-size: 16px
+      font-weight: 600
+      line-height: 28px
+      color: #000
+
+  #viewport
+    overflow-y: auto
+    -webkit-overflow-scrolling: touch
+    position: absolute
+    display: none
+    width: 100%
+    height: calc(100% - 32px)
+    top: 54px
+
+  #viewport-iframe
+    border: none
+    width: 100%
+    height: 100%
+
+  #form-wrapper
+    position: absolute
+    height: 120px
+    width: 80%
+    top: 35%
+    left: 10%
+
+    #form-title
+      display: inline-block
+      width: 100%
+      position: absolute
+      top: 0
+      left: 0
+      text-align: center
+      font-family: 'PT Serif'
+      font-weight: bold
+      font-size: 22px
+      line-height: 25px
+
+    #form
+      position: absolute
+      height: 50px
+      outline: 1px solid #cacaca
+      border-radius: 5px
+      width: 100%
+      top: 65px
+      margin: 0 auto
+      left: 0
+      right: 0
+      overflow: hidden
+
+      &.error
+        #urlfield
+          border: 1px solid red
+
+      #button
+        position: absolute
+        height: 100%
+        width: 52px
+        right: 0
+        background: #3a53cd center no-repeat asset-data-url('arrow.png')
+        background-size: 40% 40%
+
+        &:hover
+          background-color: #3248b2
+
+      #urlfield
+        position: absolute
+        box-sizing: border-box
+        padding-left: 10px
+        left: 0
+        height: 100%
+        border: none
+        font-size: 16px
+        font-family: "Open Sans"
+        color: #4d4d4d
+        width: calc(100% - 52px)
+
+        &:focus
+          border: none
+          outline: none
+
+      &.loader
+        background: rgba(50, 50, 50, 0.2)
+        pointer-events: none
+
+        #urlfield
+          background: 99% center no-repeat asset-data-url('loader.svg')
+          background-size: auto 80%
+
+    &.error
+      border: 1px solid red
+
+    #suggest
+      position: absolute
+      top: 140px
+      margin: 0 auto
+      left: 0
+      right: 0
+      width: 100%
+      font-size: 12px
+
+      #suggest-title
+        display: inline-block
+        float: left
+
+      .suggest-button
+        display: inline-block
+        float: left
+        margin-left: 10px
+        border-bottom: 1px dotted black
+
+        &:hover
+          background-color: #000
+          color: #fff
+
+#content.transient, #content.result
+  #viewport
+    display: block
+    background: center no-repeat asset-data-url('loader.svg')
+    background-size: 10% 10%
+
+  #logo
+    display: none
+
+  #form-wrapper
+    top: 8px
+    left: 5px
+    width: calc(100% - 88px)
+    height: 54px
+
+    #form-title
+      display: none
+
+    #form
+      top: 0
+      height: 38px
+
+      #button
+        width: 40px
+
+      #urlfield
+        width: calc(100% - 40px)
+
+    #suggest
+      display: none
+
+  #viewport
+    display: block
+    background: center no-repeat asset-data-url('loader.svg')
+    background-size: 10% 10%
+
+  #sharing-button
+    position: absolute
+    right: 5px
+    top: 8px
+    width: 74px
+    height: 38px
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 11px
+    font-weight: 600
+    letter-spacing: 1px
+    color: #fff
+    background-color: #000
+    border-radius: 3px
+
+  #sharing-result
+    display: none
+    position: absolute
+    right: 7px
+    top: 46px
+    width: 52px
+    height: 155px
+    background: #fff
+    z-index: 2
+    border-radius: 3px
+    box-sizing: border-box
+    border: 1px solid #b2b2bc
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.25)
+
+    .sharing_tags-buttons__item
+      width: 40px
+      float: left
+      padding: 5px
+      font-size: 12px
+      font-weight: 600
+
+      &:after
+        padding-left: 5px
+
+    .sharing_tags-buttons__icon
+      width: 40px
+      height: 40px
+      background: left center no-repeat
+      background-size: contain
+
+    .sharing_tags-vkontakte__icon
+      background-image: asset-data-url('share_vk.png')
+
+    .sharing_tags-facebook__icon
+      background-image: asset-data-url('share_fb.png')
+
+    .sharing_tags-twitter__icon
+      background-image: asset-data-url('share_tw.png')

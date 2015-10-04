@@ -21,10 +21,23 @@ $ ->
   $('@urlfield').on 'focus', ->
     $('@form').removeClass('error')
 
-  $('body'). on 'click', '@suggest-button', (e) ->
-    console.log('cal')
+  $('body').on 'click', '@suggest-button', (e) ->
     $('@urlfield').val($(@).data('domain'))
     window.app.request()
+
+  $('body').on 'click', '@sharing-button', (e) ->
+    e.stopPropagation()
+    if $('@sharing-result').css('display') != 'none'
+      $('@sharing-result').hide()
+    else
+      $('@sharing-result').show()
+
+  $('body').on 'click', ->
+    $('@sharing-result').hide()
+
+
+  $('@iframe').contents().find('body').on 'click', ->
+    $('@sharing-result').hide()
 
 window.app = window.app || {}
 window.app.request = ->

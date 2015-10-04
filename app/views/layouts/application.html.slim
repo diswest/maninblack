@@ -4,7 +4,11 @@ html lang="ru"
     = favicon_link_tag 'favicon.ico'
     meta charset="utf-8"
     meta http-equiv="Content-Type" content="text/html; charset=utf-8"
-    = stylesheet_link_tag 'application', media: 'all'
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    - if @device == :mobile
+      = stylesheet_link_tag 'application_mobile', media: 'all'
+    - else
+      = stylesheet_link_tag 'application', media: 'all'
     = stylesheet_link_tag '//fonts.googleapis.com/css?family=Open+Sans:400,600,800&subset=latin,cyrillic'
     = stylesheet_link_tag '//fonts.googleapis.com/css?family=PT+Serif:700&subset=latin,cyrillic'
     = javascript_include_tag 'application'
