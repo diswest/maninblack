@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
- 
+
 //= require sharing_tags
+//= require mixins
 //= require man

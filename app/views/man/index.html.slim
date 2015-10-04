@@ -1,7 +1,20 @@
 #content@content
-  = sharing_tags_buttons :vkontakte, :facebook, :twitter
-  #form.main@form
-    input#urlfield@urlfield type="text" placeholder="url..."
-    #button@button click
+  #logo
+    #logo-text vlastelin.io
+  #form-wrapper
+    #form-title Твой интернет уже не будет прежним
+    #form@form
+      input#urlfield@urlfield type="text" placeholder="Введите в строку адрес сайта..."
+      #button@button понеслась
+    #suggest
+      #suggest-title Например
+      = suggest_domain('lenta.ru')
+      = suggest_domain('gazeta.ru')
+      = suggest_domain('vc.ru')
+      = suggest_domain('meduza.io')
+      = suggest_domain('lenta.ru')
+      = suggest_domain('gazeta.ru')
+      = suggest_domain('vc.ru')
+      = suggest_domain('meduza.io')
   #viewport
     iframe#viewport-iframe@viewport

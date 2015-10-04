@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   if window.location.hash
+    $('@content').addClass('result')
     $('@urlfield').val(window.location.hash.substring(1))
     window.app.request()
 
@@ -38,12 +39,12 @@ window.app.request = ->
         url = $('@urlfield').val()
         $('@form').removeClass('error')
         $('@viewport').attr('src', "/?url=#{url}")
-        $('@form').addClass('transient')
+        $('@content').addClass('transient')
 
         window.location.hash = "##{url}";
 
         setResultClass = ->
-          $('@form').removeClass('transient')
+          $('@content').removeClass('transient')
           $('@content').addClass('result')
 
         setTimeout(setResultClass, 1200)
