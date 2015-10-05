@@ -10,9 +10,16 @@ $ ->
   $('body').on 'click', '@button', ->
     window.app.request()
 
+  $('body').on 'touchstart', '@button', ->
+    window.app.request()
+
   $('body').on 'click', '@logo', ->
     window.location.hash = ''
     window.location.reload()
+
+    $('body').on 'touchstart', '@logo', ->
+      window.location.hash = ''
+      window.location.reload()
 
   $('@urlfield').on 'keypress', (e) ->
     $('@form').removeClass('error')
@@ -22,6 +29,10 @@ $ ->
     $('@form').removeClass('error')
 
   $('body').on 'click', '@suggest-button', (e) ->
+    $('@urlfield').val($(@).data('domain'))
+    window.app.request()
+
+  $('body').on 'touchstart', '@suggest-button', (e) ->
     $('@urlfield').val($(@).data('domain'))
     window.app.request()
 
@@ -35,9 +46,15 @@ $ ->
   $('body').on 'click', ->
     $('@sharing-result-mobile').hide()
 
+    $('body').on 'touchstart', '@sharing-button', (e) ->
+      e.stopPropagation()
+      if $('@sharing-result-mobile').css('display') != 'none'
+        $('@sharing-result-mobile').hide()
+      else
+        $('@sharing-result-mobile').show()
 
-  $('@iframe').contents().find('body').on 'click', ->
-    $('@sharing-result-mobile').hide()
+    $('body').on 'click', ->
+      $('@sharing-result-mobile').hide()
 
 window.app = window.app || {}
 window.app.request = ->
