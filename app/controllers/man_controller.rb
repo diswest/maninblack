@@ -74,10 +74,10 @@ class ManController < ApplicationController
         img.set_attribute('style', '{max-width: 100%; max-height: 100%;}')
         img.attributes['data-original'].value = view_context.image_url('maninblack.jpg') if img.attributes['data-original']
       end
-
-      replace_meduza_images!(doc, parsed_url) if parsed_url.host == 'meduza.io'
-      replace_slon_images!(doc, parsed_url) if parsed_url.host == 'slon.ru'
     end
+
+    replace_meduza_images!(doc, parsed_url) if parsed_url.host == 'meduza.io'
+    replace_slon_images!(doc, parsed_url) if parsed_url.host == 'slon.ru'
 
     doc.css('source').each do |source|
       if source.attributes['srcset'] and (
