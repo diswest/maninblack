@@ -3,14 +3,14 @@ class ManController < ApplicationController
   def index
     @device = env['mobvious.device_type']
 
-    return if not params[:url]
+    return unless params[:url]
 
     url = get_url
     parsed_url = URI.parse(url)
 
     begin
       res = HTTParty.get(url, headers: {
-          'User-Agent' => request.user_agent
+        'User-Agent' => request.user_agent
       })
     rescue
       return
@@ -33,13 +33,13 @@ class ManController < ApplicationController
 
   def validate
     @result = true
-    @result = false if not params[:url]
+    @result = false unless params[:url]
 
     url = get_url
     parsed_url = URI.parse(url)
 
     begin
-      res = HTTParty.get(url)
+      HTTParty.get(parsed_url)
     rescue
       @result = false
     end
@@ -53,7 +53,38 @@ class ManController < ApplicationController
     end
   end
 
+  def save_share_image
+    return unless params[:image]
+
+    image = Base64.decode64(params[:image].split(',')[1])
+
+    return unless validate_image(image)
+
+    filename = Digest::MD5.hexdigest("#{Time.now.to_i}#{rand(100000..999999)}")
+    shares_path = "#{Rails.public_path}/uploads/shares"
+    file = "#{shares_path}/#{filename}.png"
+
+    File.open(file, 'wb') do|f|
+      f.write(image)
+    end
+
+    respond_to do |format|
+      format.json {
+        render json: {
+          image: "/s/#{filename}.png",
+        }
+      }
+    end
+  end
+
   private
+
+  def validate_image(image)
+    img   = Magick::Image.from_blob(image).first
+    fmt   = img.format
+
+    fmt.downcase == 'png' ? true : false
+  end
 
   def get_url()
     url = (params[:url][0..3] == 'http') ? params[:url] : "http://#{params[:url]}"

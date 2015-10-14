@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+  source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -30,6 +30,7 @@ gem 'sharing_tags'
 gem 'mina', '~> 0.3.4'
 gem 'mina-unicorn', require: false
 gem 'mobvious'
+gem 'rmagick'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

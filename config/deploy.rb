@@ -20,7 +20,7 @@ set :rvm_path, '/usr/local/rvm/scripts/rvm'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, %w(config/secrets.yml config/database.yml log tmp/pids tmp/sockets tmp/pids)
+set :shared_paths, %w(config/secrets.yml config/database.yml log tmp/pids tmp/sockets tmp/pids, public/uploads)
 
 # Optional settings:
 set :user, 'vlastelin' # Username in the server to SSH to.
@@ -50,11 +50,11 @@ task setup: :environment do
   queue! %(mkdir -p "#{deploy_to}/#{shared_path}/log")
   queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log")
 
+  queue! %(mkdir -p "#{deploy_to}/#{shared_path}/uploads")
+  queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/uploads")
+
   queue! %(mkdir -p "#{deploy_to}/#{shared_path}/config")
   queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config")
-
-  queue! %(touch "#{deploy_to}/#{shared_path}/config/database.yml")
-  queue %(echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml'.")
 
   queue! %(mkdir -p "#{deploy_to}/#{shared_path}/public")
   queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/public")
@@ -62,8 +62,8 @@ task setup: :environment do
   queue! %(mkdir -p "#{deploy_to}/#{shared_path}/public/uploads")
   queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/public/uploads")
 
-  queue! %(mkdir -p "#{deploy_to}/#{shared_path}/public/uploads/i18n_images")
-  queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/public/uploads/i18n_images")
+  queue! %(mkdir -p "#{deploy_to}/#{shared_path}/public/uploads/shares")
+  queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/public/uploads/shares")
 
   queue! %(mkdir -p "#{deploy_to}/#{shared_path}/tmp/sockets")
   queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/sockets")

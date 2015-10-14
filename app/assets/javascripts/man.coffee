@@ -7,13 +7,6 @@ $ ->
     $('@urlfield').val(window.location.hash.substring(1))
     window.app.request()
 
-  # $('@viewport').on 'load', ->
-  #   html2canvas($('@viewport')).then (canvas) ->
-  #     imageData = "d?i=#{canvas.toDataURL()}"
-  #     $('meta[property="og:image"]').attr('content', imageData)
-  #     $('meta[name="twitter:image"]').attr('content', imageData)
-  #     $('meta[itemprop="image"]').attr('content', imageData)
-
   $('body').on 'click', '@button', ->
     window.app.request()
 

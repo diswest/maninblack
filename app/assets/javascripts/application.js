@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
 
 //= require jquery.role
 //= require sharing_tags/share
@@ -23,4 +22,5 @@
 //= require sharing_tags/init
 //= require counter
 //= require html2canvas
+//= require sharing
 //= require man
