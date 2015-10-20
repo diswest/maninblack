@@ -22,5 +22,5 @@
 //= require sharing_tags/init
 //= require counter
 //= require html2canvas
-//= require sharing
 //= require man
+//= require screenshot

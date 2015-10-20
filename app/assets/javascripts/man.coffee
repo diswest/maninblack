@@ -57,7 +57,12 @@ $ ->
       $('@sharing-result-mobile').hide()
 
 window.app = window.app || {}
+window.request_lock = false
+
 window.app.request = ->
+  return if window.request_lock
+
+  window.request_lock = true
   $('@urlfield').attr('readonly', 'readonly')
   $('@form').addClass('loader')
   $.ajax '/validate',
@@ -67,6 +72,7 @@ window.app.request = ->
     data:
       url: $('@urlfield').val()
     complete: ->
+      window.request_lock = false
       $('@form').removeClass('loader')
       $('@urlfield').removeAttr('readonly')
     error: ->
