@@ -6,7 +6,7 @@ $ ->
 
     window.screenshot_lock = true
     $('@screenshot').addClass('loader')
-    html2canvas($('@viewport')).then (canvas) ->
+    html2canvas($('body')).then (canvas) ->
       $.ajax '/share',
         type: 'POST',
         dataType: 'json',
